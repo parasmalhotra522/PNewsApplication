@@ -1,15 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './utils/loader.style.css';
 
-export default class Navbar extends Component {
-
+const Navbar = () => {
   
-  
-  
-  render() {
-    return (
-   
+    return ( 
       <nav className="navbar navbar-expand-lg bg-dark bg-body-dark">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">P News</NavLink>
@@ -26,9 +21,7 @@ export default class Navbar extends Component {
                   style={{color: "white"}}
                 >Home</NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink className="nav-link" to="/" style={{color: "white"}}>About</NavLink>
-            </li> */}
+           
             <li className="nav-item">
               <NavLink className="nav-link" to="/business" style={{color: "white"}}>Business</NavLink>
               </li>
@@ -58,5 +51,5 @@ export default class Navbar extends Component {
     
       
     );
-  }
 }
+export default Navbar;

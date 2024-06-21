@@ -1,27 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-
-export default class NewsList extends Component {
-   
-    render() {
-        const { title, description, imageUrl, url, source, author, publishedAt } = this.props;
-        return (
-                     
-                <div
-                className="card my-3"
-                key={source.id}
-                
-                style={{
-                    width:'100%',
-                    height: "auto", 
-                    display: 'flex',
-                    flexDirection:'column'
-                }}>
+const NewsList = ({title, description, imageUrl, url, source, author, publishedAt}) => {   
+    return (                  
+        <div
+                    className="card my-3"
+                    key={source?.id}
+                    style={{
+                        width:'100%',
+                        height: "auto", 
+                        display: 'flex',
+                        flexDirection:'column'
+                    }}>
                 
                 <div className="badge rounded-pill bg-danger"
-                style={{display:'flex', justifyContent:'flex-end', position:'absolute', right:'0' }}
-                >  {source}</div>
+                    style={{display:'flex', justifyContent:'flex-end', position:'absolute', right:'0' }}
+                >
+                    {source}
+                </div>
                         <img src={imageUrl} className="card-img-top" style={{ width: "100%", height: "50%" }} alt="..." />
                         <div className="card-body">
                             <h5 className="card-title"> {title}...</h5>
@@ -37,11 +33,9 @@ export default class NewsList extends Component {
                             className="btn btn-dark btn-sm" rel="noreferrer">Read More</a>
                      
                 </div>
-                    </div>
-            
-          
-            
+        </div>    
     
     )
-  }
 }
+  
+export default NewsList;
