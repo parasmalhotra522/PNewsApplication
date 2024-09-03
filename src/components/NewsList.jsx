@@ -2,6 +2,7 @@ import React from 'react'
 
 
 const NewsList = ({title, description, imageUrl, url, source, author, publishedAt}) => {   
+    // console.log("I AM IN NEWS LIT")
     return (                  
         <div
                     className="card my-3"

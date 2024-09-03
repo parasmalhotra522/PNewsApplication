@@ -55,6 +55,7 @@ const News = ({apiKey, category='general', country='us', setProgress, pageSize=1
             }).then((d) => d.json());
     
         setLoading(false);
+        
             setNewsArticle({
                 articles: newsArticles.articles.concat(data.articles),
                 totalResults: data.totalResults,
@@ -81,9 +82,9 @@ const News = ({apiKey, category='general', country='us', setProgress, pageSize=1
                         >
                             <div className="container">
                                 <div className="row">
-                                {console.log('CHECK',newsArticles.articles)}
+                                {console.log('CHECKING THE API RES',newsArticles.articles)}
                                 {newsArticles.articles.map((article) => (
-                                    article.urlToImage &&
+                                    article.urlToImage ??
                                     (<div className="col-md-4" key={article.url}>
                                         <NewsList
                                     
