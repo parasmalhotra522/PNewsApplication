@@ -19,31 +19,7 @@ const News = ({apiKey, category='general', country='us', setProgress, pageSize=1
         return string.charAt(0).toUpperCase() + string.substring(1);
     }
 
-    const updateNews = async () => {
-        console.log("CHecking page no -- inside update news", newsArticles.page);
-        setLoading(true);
-        setProgress(40);
-        const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${Number(newsArticles.page)}&pageSize=${pageSize}`;
-            
-        const data= await fetch(url, {
-                "method": "GET",
-        }).then((d) => d.json());
-        setProgress(70);
-        console.log("daata", data);
-        setNewsArticle({
-            articles: data.articles,
-            totalResults: data.totalResults,
-            page:1    
-        })
-        setLoading(false);
-         setProgress(100);
-    }
-
-    useEffect(() => {
-        document.title = `${capitalizeFunction(category)} - PNews Application`
-        updateNews();    
-    },[])
-    
+   
 
     const fetchMoreData = async() => {
 
@@ -62,6 +38,35 @@ const News = ({apiKey, category='general', country='us', setProgress, pageSize=1
                page: Number(newsArticles.page)+ 1 
             })
     }
+
+    useEffect(() => {
+    const fetchData = async () => {    
+        setLoading(true);
+        setProgress(40);
+        const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}&page=${Number(newsArticles.page)}&pageSize=${pageSize}`;
+            
+        const data = await fetch(url, {
+            "method": "GET",
+        }).then((d) => d.json());
+        setProgress(70);
+        console.log("data", data);
+        setNewsArticle({
+            articles: data.articles,
+            totalResults: data.totalResults,
+            page: 1
+        });
+        setLoading(false);
+        setProgress(100);
+    };
+
+    document.title = `${capitalizeFunction(category)} - PNews Application`;
+    fetchData();
+    
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+},[]);
+
+
+    
 
 
 
